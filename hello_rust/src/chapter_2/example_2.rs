@@ -1,7 +1,7 @@
-use std::io::Write;
-use std::str::FromStr;
 use std::env::args;
 use std::io::stderr;
+use std::io::Write;
+use std::str::FromStr;
 
 fn gcd(mut n: u64, mut m: u64) -> u64 {
     assert!(n != 0 && m != 0);
@@ -23,15 +23,16 @@ fn test_gcd() {
 }
 
 fn main() {
-    // println!("Hello, world!");
-
-    // let greater = gcd(78, 0);
-    // println!("{}", greater);
-
-
     // Handling Command-Line Arguments
+
+    // Rust vectors are analogous to:
+    // - C++        std::vector
+    // - Python     list
+    // - Javascript array
     let mut numbers = Vec::new();
     
+    // We are skipping the fisrt variable argument 
+    // Because it's for the name of the program.
     for arg in args().skip(1) {
         numbers.push(u64::from_str(&arg).expect("error parsing argument"));
     }
