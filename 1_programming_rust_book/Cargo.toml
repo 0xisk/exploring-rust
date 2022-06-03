@@ -10,6 +10,7 @@ iron = "0.5.1"
 mime = "0.2.3"
 router = "0.5.1"
 urlencoded = "0.5.0"
+num = "0.1.27"
 
 [[bin]]
 name = "chapter_2"
