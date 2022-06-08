@@ -14,4 +14,4 @@ num = "0.1.27"
 
 [[bin]]
 name = "chapter_2"
-path = "src/chapter_2/example_3_b.rs"
+path = "src/chapter_2/example_4_b.rs"
