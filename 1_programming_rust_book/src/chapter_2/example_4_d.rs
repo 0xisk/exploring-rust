@@ -1,3 +1,5 @@
+/// Plotting the Set
+
 /// Given the row and column of a pixel in the outpu image, return the 
 /// correspoinding point on the complex plane. 
 /// 
