@@ -91,3 +91,61 @@ enum Attend {
 Box<Attend>
 ```
 
+### Shared, mutable
+```rust
+/// Shared and mutable references: nonowning
+/// pointers that must not outlive their referent
+&i32, 
+&mut i32
+```
+
+### String
+```rust
+/// UTF-8 string, dynamically sized
+String
+
+/// Reference to str: nonowning pointer to
+/// UTF-8 text
+&str
+```
+
+### Arrays
+```rust
+/// Array, fixed length; elements all of same type
+[f64; 4]
+[u8; 256]
+```
+
+### Vector
+```rust
+/// Vector, varying length; elements all of same
+/// type
+Vec<f64>
+```
+
+```rust
+/// Reference to slice: reference to a portion of
+/// an array or vector, comprising pointer and
+/// length.
+&[u8]
+&mut [8]
+```
+
+### Traits
+```rust
+/// Trait object: reference to any value that
+/// implements a given set of methods.
+&Any,
+&mut Read
+```
+
+### Points
+```rust
+/// Pointer to function
+fn(&str, usize) -> isize
+```
+
+### Closure
+```rust
+/// (Closure types have nowritten form)
+```
