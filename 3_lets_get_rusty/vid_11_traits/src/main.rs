@@ -1,3 +1,5 @@
+use core::fmt::Debug;
+
 pub struct NewsArticle {
     pub author: String,
     pub headline: String,
@@ -50,6 +52,50 @@ pub trait Summary {
     }
 }
 
+pub trait Display {}
+
+pub trait Clone {}
+
+// Single traits
+pub fn notifySingleTrait1(item: &impl Summary) {
+    println!("Breaking news! {}", item.summarize());
+}
+
+pub fn notifySingleTrait2<T: Summary>(item: &T) {
+    println!("Breaking news! {}", item.summarize());
+}
+
+// Multiple traits
+pub fn notifyMultipleTraits1(item1: &impl Summary, item2: &impl Summary) {
+    println!("Breaking news! {}", item1.summarize());
+}
+
+pub fn notifyMultipleTraits2<T: Summary>(item1: &T, item2: &T) {
+    println!("Breaking news! {}", item1.summarize());
+}
+
+// T or impl are required to be both Summary and Display
+pub fn notifyMultipleTraits3(item1: &(impl Summary + Display), item2: &impl Summary) {
+    println!("Breaking news! {}", item1.summarize());
+}
+
+pub fn notifyMultipleTraits4<T: Summary + Display>(item1: &T, item2: &T) {
+    println!("Breaking news! {}", item1.summarize());
+}
+
+// Becuase the types here are unreadable
+// we can use the "where"
+fn some_function<T: Display + Clone, U: Clone + Debug>(t: &T, u: &U) -> i32 {
+    1
+}
+
+fn some_function2<T, U>(t: &T, u: &U) -> i32 
+    where T: Display + Clone,
+          U: Clone + Debug
+{
+    1
+}
+
 fn main() {
     let tweet: Tweet = Tweet {
         username: String::from("@iskdrews"),
@@ -68,6 +114,8 @@ fn main() {
         username: String::from("Isk"),
         post: String::from("This is a dumb post"),
     };
+
+    notify(&article);
 
     println!("Tweet summary: {}", tweet.summarize());
     println!("Article summary: {}", article.summarize());
