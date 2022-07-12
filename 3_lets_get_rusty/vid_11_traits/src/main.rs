@@ -89,11 +89,22 @@ fn some_function<T: Display + Clone, U: Clone + Debug>(t: &T, u: &U) -> i32 {
     1
 }
 
-fn some_function2<T, U>(t: &T, u: &U) -> i32 
-    where T: Display + Clone,
-          U: Clone + Debug
+fn some_function2<T, U>(t: &T, u: &U) -> i32
+where
+    T: Display + Clone,
+    U: Clone + Debug,
 {
     1
+}
+
+// Traits as return types
+fn returns_summarizable() -> impl Summary {
+    Tweet {
+        username: String::from("@iskdrews"),
+        content: String::from("Hi There!"),
+        reply: false,
+        retweet: false,
+    }
 }
 
 fn main() {
@@ -115,9 +126,11 @@ fn main() {
         post: String::from("This is a dumb post"),
     };
 
-    notify(&article);
+    notifyMultipleTraits1(&article, &post);
 
     println!("Tweet summary: {}", tweet.summarize());
     println!("Article summary: {}", article.summarize());
     println!("Post summary: {}", post.summarize());
+
+    println!("{}", returns_summarizable().summarize());
 }
