@@ -5,6 +5,10 @@ pub struct NewsArticle {
 }
 
 impl Summary for NewsArticle {
+    fn summarize_author(&self) -> String {
+        format!("@{}", self.author)
+    }
+
     fn summarize(&self) -> String {
         format!("{}, by {}", self.headline, self.author)
     }
@@ -18,13 +22,32 @@ pub struct Tweet {
 }
 
 impl Summary for Tweet {
+    fn summarize_author(&self) -> String {
+        format!("@{}", self.username)
+    }
+
     fn summarize(&self) -> String {
         format!("{}, by {}", self.username, self.content)
     }
 }
 
+pub struct Post {
+    pub username: String,
+    pub post: String,
+}
+
+impl Summary for Post {
+    fn summarize_author(&self) -> String {
+        format!("@{}", self.username)
+    }
+}
+
 pub trait Summary {
-    fn summarize(&self) -> String;
+    fn summarize_author(&self) -> String;
+
+    fn summarize(&self) -> String {
+        format!("(Read more from {}...)", self.summarize_author())
+    }
 }
 
 fn main() {
@@ -41,6 +64,12 @@ fn main() {
         content: String::from("Happy to learn Rust!"),
     };
 
+    let post: Post = Post {
+        username: String::from("Isk"),
+        post: String::from("This is a dumb post"),
+    };
+
     println!("Tweet summary: {}", tweet.summarize());
     println!("Article summary: {}", article.summarize());
+    println!("Post summary: {}", post.summarize());
 }
