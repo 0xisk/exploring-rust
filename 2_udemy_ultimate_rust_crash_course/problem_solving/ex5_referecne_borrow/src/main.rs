@@ -25,7 +25,7 @@ fn main() {
     // indicating whether or not the String both starts with a "b" AND contains an "a".
     // Hint 1: use `.starts_with("b")` and `.contains("a")`
     // Hint 2: `&&` is the boolean "AND" operator
-    //
+
     if eat(arg) {
         println!("Might be bananas");
     } else {
