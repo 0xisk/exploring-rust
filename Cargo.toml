@@ -1,0 +1,14 @@
+[workspace]
+members = [
+    "packages/learning_rust/1_programming_rust_book",
+    "packages/learning_rust/2_udemy_ultimate_rust_crash_course/ex3_simple_types",
+    "packages/learning_rust/2_udemy_ultimate_rust_crash_course/ex4_control_flow_strings",
+    "packages/learning_rust/2_udemy_ultimate_rust_crash_course/ex5_referecne_borrow",
+    "packages/learning_rust/3_lets_get_rusty/vid_5_structs",
+    "packages/learning_rust/3_lets_get_rusty/vid_6_enums",
+    "packages/learning_rust/3_lets_get_rusty/vid_7_modules",
+    "packages/learning_rust/3_lets_get_rusty/vid_7_restaurant",
+    "packages/learning_rust/3_lets_get_rusty/vid_11_traits",
+    "packages/learning_rust/4_the_rust_programming_lanaguage/chapter_2_guessing_game",
+
+]
