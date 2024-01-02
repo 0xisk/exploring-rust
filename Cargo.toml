@@ -10,5 +10,6 @@ members = [
     "packages/learning_rust/3_lets_get_rusty/vid_7_restaurant",
     "packages/learning_rust/3_lets_get_rusty/vid_11_traits",
     "packages/learning_rust/4_the_rust_programming_lanaguage/chapter_2_guessing_game",
-    "packages/cryptography/elliptic_curves/secq256k1"
+    "packages/cryptography/elliptic_curves/secq256k1",
+    "packages/cryptography/hash_functions/poseidon_k256"
 ]
