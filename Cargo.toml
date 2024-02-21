@@ -14,7 +14,9 @@ members = [
     # Cryptography
     "packages/cryptography/elliptic_curves/secq256k1",
     "packages/cryptography/hash_functions/poseidon_k256",
+    "packages/cryptography/halo2/simple_example",
 
     # Comprehensive Rust Book
-    "packages/comprehensive_rust/types_variables"
+    "packages/comprehensive_rust/u5_types_variables",
+    "packages/comprehensive_rust/u6_control_flow_basics"
 ]
