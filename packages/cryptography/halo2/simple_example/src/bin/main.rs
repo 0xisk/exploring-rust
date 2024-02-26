@@ -5,13 +5,13 @@ fn main() {
     // ANCHOR: test-circuit
     // The number of rows in our circuit cannot exceed 2^k. Since our example
     // circuit is very small, we can pick a very small value here.
-    let k = 4;
+    let k = 4;  // TODO: why would it exceed 2^k?
 
     // Prepare the private and public inputs to the circuit!
     let constant = Fp::from(7);
     let a = Fp::from(2);
     let b = Fp::from(3);
-    let c = constant * a.square() * b.square();
+    let c = (constant * a * b).square();
 
     // Instantiate the circuit with the private inputs
     let circuit = MyCircuit::new(constant, Value::known(a), Value::known(b));

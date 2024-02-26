@@ -36,7 +36,7 @@ trait NumericInstructions<F: Field>: Chip<F> {
 /// The chip that will implement our instructions! Chips store their own
 /// config, as well as type markers if necessary.
 pub struct FieldChip<F: Field> {
-    config: FieldConfig,
+    config: FieldConfig, // Chip state
     _marker: PhantomData<F>,
 }
 
@@ -58,6 +58,19 @@ pub struct FieldConfig {
     // This is important when building larger circuits, where columns are used by
     // multiple sets of instructions.
     s_mul: Selector,
+}
+
+impl<F: Field> Chip<F> for FieldChip<F> {
+    type Config = FieldConfig;
+    type Loaded = ();
+
+    fn config(&self) -> &Self::Config {
+        &self.config
+    }
+
+    fn loaded(&self) -> &Self::Loaded {
+        &()
+    }
 }
 
 impl<F: Field> FieldChip<F> {
@@ -119,18 +132,6 @@ impl<F: Field> FieldChip<F> {
     }
 }
 
-impl<F: Field> Chip<F> for FieldChip<F> {
-    type Config = FieldConfig;
-    type Loaded = ();
-
-    fn config(&self) -> &Self::Config {
-        &self.config
-    }
-
-    fn loaded(&self) -> &Self::Loaded {
-        &()
-    }
-}
 
 #[derive(Clone)]
 struct Number<F: Field>(AssignedCell<F, F>);
@@ -197,7 +198,7 @@ impl<F: Field> NumericInstructions<F> for FieldChip<F> {
 
                 // Now we can assign the multiplication result, which is to be assigned
                 // into the output position.
-                let value = a.0.value().copied() * b.0.value();
+                let value = a.0.value().copied() * b.0.value(); // TODO: why only a.0.value.coped and not with b?
 
                 // Finally, we do the assignment to the output, returning a
                 // variable to be used in another part of the circuit.
@@ -267,7 +268,7 @@ impl<F: Field> Circuit<F> for MyCircuit<F> {
         let field_chip = FieldChip::<F>::construct(config);
 
         // Load out private values into the circuit
-        let a = field_chip.load_private(layouter.namespace(|| "laod a"), self.a)?;
+        let a = field_chip.load_private(layouter.namespace(|| "load a"), self.a)?;
         let b = field_chip.load_private(layouter.namespace(|| "load b"), self.b)?;
 
         // Load the constant factor into the circuit
@@ -290,6 +291,27 @@ impl<F: Field> Circuit<F> for MyCircuit<F> {
         let c = field_chip.mul(layouter.namespace(|| "constant * absq"), constant, absq)?;
 
         // Expose the result as a public input to the circuit
-        field_chip.expose_public(layouter.namespace(|| "expose c"), c, 0)
+        field_chip.expose_public(layouter.namespace(|| "expose c"), c, 0) // TODO: What is row? 
     }
 }
+
+
+// Layouter
+// - The Layouter is an abstraction used to manage the placement of various parts of a circuit within the overall layout. 
+//   It is responsible for organizing different components (like gates or groups of gates) into a coherent structure that satisfies the circuit's constraints.
+// 
+// - It acts as an interface through which high-level operations (like loading a private input, performing multiplication, etc.) can request space within the circuit's layout. 
+//   The layouter ensures that these requests are fulfilled in a way that maintains the integrity and correctness of the circuit.
+// 
+// - The layouter can handle more complex tasks like allocating regions, managing the placement of different instructions across the circuit,
+//   and ensuring that the circuit's overall design is efficient and optimized for the proving system it's intended for.
+
+// Region
+// - A Region is a more localized concept within the circuit layout. 
+//  It represents a specific section or subset of the circuit where a particular set of operations or instructions are to be executed.
+//
+// - When you define a region, you're effectively carving out a dedicated space within the circuit for a group of related operations. 
+//  This can include anything from a single gate to a complex component of the circuit that performs a specific function.
+//
+// - Within a region, you can place various elements (like cells for inputs and outputs, selectors, etc.) relative to each other. 
+//  This allows for detailed control over how these elements interact and how they contribute to the circuit's overall behavior.
