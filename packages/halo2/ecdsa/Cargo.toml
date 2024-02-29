@@ -1,5 +1,5 @@
 [package]
-name = "ecdsa"
+name = "ecds"
 version = "0.3.0"
 edition = "2021"
 
