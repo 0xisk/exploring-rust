@@ -21,5 +21,8 @@ members = [
 
     # Comprehensive Rust Book
     "comprehensive_rust/u5_types_variables",
-    "comprehensive_rust/u6_control_flow_basics"
+    "comprehensive_rust/u6_control_flow_basics",
+
+    # Asynchronous Rust    
+    "asynchronous-rust/tokio/mini-redis"
 ]

@@ -12,3 +12,8 @@ rustup show active-toolchain
 rustup default stable
 ```
 
+## `cargo`
+1. Install a package
+```shell
+cargo install <PACKAGE>
+```
