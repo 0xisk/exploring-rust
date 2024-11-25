@@ -1,4 +1,4 @@
-# Notes on "The Rust Porgramming Langauge"
+# Notes on "The Rust Programming Language"
 
 ## `rustup`
 
