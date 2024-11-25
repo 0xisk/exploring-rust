@@ -1,25 +1,25 @@
 [workspace]
 members = [
-    "packages/learning_rust/1_programming_rust_book",
-    "packages/learning_rust/2_udemy_ultimate_rust_crash_course/ex3_simple_types",
-    "packages/learning_rust/2_udemy_ultimate_rust_crash_course/ex4_control_flow_strings",
-    "packages/learning_rust/2_udemy_ultimate_rust_crash_course/ex5_referecne_borrow",
-    "packages/learning_rust/3_lets_get_rusty/vid_5_structs",
-    "packages/learning_rust/3_lets_get_rusty/vid_6_enums",
-    "packages/learning_rust/3_lets_get_rusty/vid_7_modules",
-    "packages/learning_rust/3_lets_get_rusty/vid_7_restaurant",
-    "packages/learning_rust/3_lets_get_rusty/vid_11_traits",
-    "packages/learning_rust/4_the_rust_programming_lanaguage/chapter_2_guessing_game",
+    # "learning_rust/1_programming_rust_book",
+    "learning_rust/2_udemy_ultimate_rust_crash_course/ex3_simple_types",
+    # "learning_rust/2_udemy_ultimate_rust_crash_course/ex4_control_flow_strings",
+    "learning_rust/2_udemy_ultimate_rust_crash_course/ex5_referecne_borrow",
+    "learning_rust/3_lets_get_rusty/vid_5_structs",
+    "learning_rust/3_lets_get_rusty/vid_6_enums",
+    "learning_rust/3_lets_get_rusty/vid_7_modules",
+    "learning_rust/3_lets_get_rusty/vid_7_restaurant",
+    # "learning_rust/3_lets_get_rusty/vid_11_traits",
+    "learning_rust/4_the_rust_programming_lanaguage/chapter_2_guessing_game",
 
     # Cryptography
-    "packages/cryptography/elliptic_curves/secq256k1",
-    "packages/cryptography/hash_functions/poseidon_k256",
+    "cryptography/elliptic_curves/secq256k1",
+    "cryptography/hash_functions/poseidon_k256",
 
     # Halo2
-    "packages/halo2/simple_example",
-    "packages/halo2/ecdsa",
+    "halo2/simple_example",
+    "halo2/ecdsa",
 
     # Comprehensive Rust Book
-    "packages/comprehensive_rust/u5_types_variables",
-    "packages/comprehensive_rust/u6_control_flow_basics"
+    "comprehensive_rust/u5_types_variables",
+    "comprehensive_rust/u6_control_flow_basics"
 ]

@@ -16,7 +16,7 @@
 use rand::{CryptoRng, ErrorKind::Transient, Rng};
 
 
-use std::io
+use std::io;
 mod front_of_house {
     pub mod hosting {
         pub fn add_to_waitlist() {}
