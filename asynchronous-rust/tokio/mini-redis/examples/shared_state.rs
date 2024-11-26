@@ -7,7 +7,6 @@ use std::{
 use anyhow::{anyhow, Ok, Result};
 use bytes::Bytes;
 use mini_redis::{
-    cmd::Get,
     Command::{self, Get, Set},
     Connection, Frame,
 };
