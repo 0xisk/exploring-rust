@@ -25,4 +25,4 @@ members = [
 
     # Asynchronous Rust    
     "asynchronous-rust/tokio/mini-redis"
-, "codility/1_iterations/binary-gap"]
+, "tokio-block-reader"]
